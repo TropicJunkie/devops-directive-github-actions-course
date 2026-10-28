@@ -1,0 +1,17 @@
+on:
+  workflow_call:
+    inputs:
+      username:
+        description: 'A username passed from another workflow' 
+        default: 'john-doe'
+        required: false
+        type: string
+
+jobs:
+  print-username:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print the input name to STDOUT
+        run: echo the username is ${[ inputs.username}]
+    
