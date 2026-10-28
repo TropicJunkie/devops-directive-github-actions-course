@@ -1,17 +1,20 @@
+name: Reusable workflow example
+
 on:
   workflow_call:
     inputs:
-      username:
-        description: 'A username passed from another workflow' 
-        default: 'john-doe'
-        required: false
+      config-path:
+        required: true
         type: string
+    secrets:
+      token:
+        required: true
 
 jobs:
-  print-username:
+  triage:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Print the input name to STDOUT
-        run: echo the username is ${[ inputs.username}]
-    
+    - uses: actions/labeler@v6
+      with:
+        repo-token: ${{ secrets.token }}
+        configuration-path: ${{ inputs.config-path }}
