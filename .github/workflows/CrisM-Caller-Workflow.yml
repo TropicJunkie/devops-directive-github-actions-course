@@ -1,25 +1,18 @@
-name: Call Another Workflow
+name: Call a reusable workflow
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: 
 
 jobs:
-  Build:
-    runs-on: ubuntu-24.04
-    steps:
-    - run: echo "Downloading Dependencies"
-    - run: echo "Dependencies Downloaded"
+  call-workflow:
+    uses: TropicJunkie/devops-directive-github-actions-course/.github/workflows/workflow-A.yml@v1
 
-  Test:
-    runs-on: ubuntu-22.04
-    needs: Build
-    steps:
-    - run: echo "Running Unit Tests..."
-    - run: echo "Unit Tests Ran!"
-
-  Deploy:
-    uses: ./.github/workflows/CrisM-Reusuable-Workflow.yml
+  call-workflow-passing-data:
+    permissions:
+      contents: read
+      pull-requests: write
+    uses: octo-org/example-repo/.github/workflows/workflow-B.yml@main
     with:
-      username: 'CrisM'
-    
-    
+      config-path: .github/labeler.yml
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
