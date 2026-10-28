@@ -3,15 +3,36 @@ name: Reusable Workflow
 on:
   workflow_call:
     inputs:
+    
+      app_name:
+        required: true
+        type: string
+        default: "Bloons TD"
+        
       environment:
         description: "Deployment environment"
         required: true
         type: string
+
+      build_number:
+        required: false
+        type: number
+        default: 1
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Display Environment
-        run: echo "Deploying to ${{ inputs.environment }}"
+      - name: Display Inputs
+        env:
+          APP_NAME: ${{ inputs.app_name }}
+          DEPLOY_ENV: ${{ inputs.environment }}
+          BUILD_NUMBER: ${{ inputs.build_number }}
+        run: |
+          echo "Application: $APP_NAME"
+          echo "Deploying to: $DEPLOY_ENV"
+          echo "Build Number: $BUILD_NUMBER"
+
+
+        
