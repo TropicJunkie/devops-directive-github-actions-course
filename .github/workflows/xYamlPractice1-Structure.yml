@@ -1,0 +1,21 @@
+name: YAMLStructurePractice
+
+on:
+  workflow_dispatch:
+
+jobs:
+  Build:
+    runs-on: ubuntu-24.04
+    steps:
+    - run: echo "Downloading Dependencies"
+    - run: echo "Dependencies Downloaded"
+
+  Test:
+    runs-on: ubuntu-22.04
+    needs: Build
+    steps:
+    - run: echo "Running Unit Tests..."
+    - run: echo "Unit Tests Ran!"
+
+    
+    
