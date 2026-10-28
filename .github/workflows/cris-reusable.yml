@@ -4,9 +4,14 @@ on:
   workflow_call:
     inputs:
       color:
-        description: A selected color
+        description: "A selected color"
         type: string
         required: true
+
+      texture:
+        description: "A selected texture"
+        required: true
+        type: string
 
 jobs:
   color-select:
@@ -14,3 +19,4 @@ jobs:
 
     steps:
     - run: echo "Selected color ${{ inputs.color }}"
+    - run: echo "Selected texture ${{ inputs.texture }}"
