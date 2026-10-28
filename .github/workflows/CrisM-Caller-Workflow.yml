@@ -1,4 +1,4 @@
-name: YAMLStructurePractice
+name: Call Another Workflow
 
 on:
   workflow_dispatch:
