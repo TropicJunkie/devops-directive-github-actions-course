@@ -1,0 +1,12 @@
+name: Main Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  call-deployment:
+    uses: ./.github/workflows/reusable.yml
+    with:
+      environment: production
