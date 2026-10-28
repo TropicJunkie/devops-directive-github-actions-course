@@ -17,5 +17,9 @@ jobs:
     - run: echo "Running Unit Tests..."
     - run: echo "Unit Tests Ran!"
 
+  Deploy:
+    uses: ./.github/workflows/CrisM-Reusuable.yml
+    with:
+      username: 'CrisM'
     
     
