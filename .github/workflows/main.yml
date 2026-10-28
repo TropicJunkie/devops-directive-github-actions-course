@@ -7,4 +7,6 @@ jobs:
   call-deployment:
     uses: ./.github/workflows/reusable.yml
     with:
-      environment: production
+      app_name: StudentPortal
+      environment: Development
+      build_number: 4
