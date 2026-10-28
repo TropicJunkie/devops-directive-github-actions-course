@@ -1,0 +1,10 @@
+name: call color
+
+on:
+  workflow_dispatch:
+
+jobs:
+  call-deployment:
+    uses: ./.github/workflows/cris-reusable.yml
+    with:
+      color-select: yellow
